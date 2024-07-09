@@ -1,7 +1,9 @@
 # LazyMasonry
 
-[![License](http://img.shields.io/:license-Apache%202-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+<!-- [![License](http://img.shields.io/:license-Apache%202-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 [![Slack](https://img.shields.io/badge/Slack-Join%20our%20community-brightgreen?style=flat&logo=slack)](https://join.slack.com/t/querybook/shared_invite/zt-se82lvld-yyzRIqvIASsyYozk7jMCYQ)
+-->
 
 Optimiza la carga de imágenes con técnicas avanzadas y gestión eficiente del estado, integrando bibliotecas populares y configuraciones personalizadas para el consumo de APIs.
 
