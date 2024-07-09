@@ -7,13 +7,27 @@ import Masonry from "react-masonry-css";
 import Card from "./Card";
 import Spinner from "./Spinner";
 
+interface FetchImageItem {
+  id: string;
+  url: string;
+  urls: {
+    small: string;
+  };
+  description: string;
+}
+interface FetchImagesResponse {
+  data: FetchImageItem[];
+  prevOffset?: number;
+  total?: number;
+}
+
 const fetchImages = async ({
   pageParam,
   searchValue,
 }: {
   pageParam: number;
   searchValue: string;
-}) => {
+}): Promise<FetchImagesResponse> => {
   try {
     const apiKey = import.meta.env.VITE_API_KEY_UNSPLASH;
     const response = await clienteAxios.get("search/photos", {
@@ -27,9 +41,13 @@ const fetchImages = async ({
       },
     });
 
-    // Incrementamos pageParam aquí antes de retornar
     const updatedData = {
-      data: response.data.results,
+      data: response.data.results.map((item: FetchImageItem) => ({
+        id: item.id,
+        url: item.urls.small,
+        urls: item.urls,
+        description: item.description,
+      })) as FetchImageItem[],
       prevOffset: pageParam + 1,
     };
     return updatedData;
@@ -39,20 +57,32 @@ const fetchImages = async ({
   }
 };
 
-const ReactLazyLoading = () => {
+const ReactLazyLoading: React.FC = () => {
   const val = useBookStore((state) => state.value);
 
-  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ["images", val],
-    queryFn: ({ pageParam = 1, searchValue = val }) =>
-      fetchImages({ pageParam, searchValue }),
-    getNextPageParam: (lastPage) => {
-      if (lastPage.total === lastPage.data.length) {
-        return false;
-      }
-      return lastPage.prevOffset;
-    },
-  });
+  const { data, fetchNextPage, hasNextPage } =
+    useInfiniteQuery<FetchImagesResponse>({
+      queryKey: ["images", val],
+      queryFn: () =>
+        fetchImages({
+          pageParam: 1,
+          searchValue: val,
+        }),
+
+      getNextPageParam: (lastPage) => {
+        if (lastPage.total === lastPage.data.length) {
+          return false;
+        }
+
+        if (typeof lastPage.prevOffset === "number") {
+          return lastPage.prevOffset;
+        }
+
+        throw new Error("prevOffset must be a number");
+      },
+
+      initialPageParam: 1,
+    });
 
   const images = data?.pages.flatMap((page) => page.data) || [];
   const breakpointColumnsObj = {
@@ -68,7 +98,7 @@ const ReactLazyLoading = () => {
         <InfiniteScroll
           dataLength={images.length}
           next={() => fetchNextPage()}
-          hasMore={hasNextPage}
+          hasMore={!!hasNextPage}
           loader={<Spinner />}
         >
           <Masonry
