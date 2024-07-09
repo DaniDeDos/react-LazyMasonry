@@ -7,7 +7,13 @@ import Masonry from "react-masonry-css";
 import Card from "./Card";
 import Spinner from "./Spinner";
 
-const fetchImages = async ({ pageParam, searchValue }) => {
+const fetchImages = async ({
+  pageParam,
+  searchValue,
+}: {
+  pageParam: number;
+  searchValue: string;
+}) => {
   try {
     const apiKey = import.meta.env.VITE_API_KEY_UNSPLASH;
     const response = await clienteAxios.get("search/photos", {
@@ -33,11 +39,11 @@ const fetchImages = async ({ pageParam, searchValue }) => {
   }
 };
 
-function ReactLazyLoading() {
+const ReactLazyLoading = () => {
   const val = useBookStore((state) => state.value);
 
   const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ["images", val], // Incluye `val` en la queryKey
+    queryKey: ["images", val],
     queryFn: ({ pageParam = 1, searchValue = val }) =>
       fetchImages({ pageParam, searchValue }),
     getNextPageParam: (lastPage) => {
@@ -48,7 +54,6 @@ function ReactLazyLoading() {
     },
   });
 
-  // Concatenamos todas las imágenes en un único array
   const images = data?.pages.flatMap((page) => page.data) || [];
   const breakpointColumnsObj = {
     default: 4,
@@ -79,6 +84,6 @@ function ReactLazyLoading() {
       )}
     </div>
   );
-}
+};
 
 export { ReactLazyLoading };

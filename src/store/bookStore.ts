@@ -1,6 +1,11 @@
-import { create } from 'zustand'
+import { create } from "zustand";
 
-export const useBookStore = create((set) => ({
-    value: 'cat',
-    updateValue: (newValue) => set({ value: newValue })
-}))
+interface BookStoreState {
+  value: string;
+  updateValue: (newValue: string) => void;
+}
+
+export const useBookStore = create<BookStoreState>((set) => ({
+  value: "cat",
+  updateValue: (newValue: string) => set({ value: newValue }),
+}));

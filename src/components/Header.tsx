@@ -1,12 +1,12 @@
-import { useState } from "react";
+import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 import { useBookStore } from "../store/bookStore";
 import { FiSearch } from "react-icons/fi";
 
-const Header = () => {
-  const [value, setValue] = useState("");
+const Header: React.FC = () => {
+  const [value, setValue] = useState<string>("");
   const updateValue = useBookStore((state) => state.updateValue);
 
-  const handleKey = (e) => {
+  const handleKey = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       console.log("press enter: ", value);
       updateValue(value);
@@ -16,6 +16,10 @@ const Header = () => {
 
   const clearSearchValue = () => {
     setValue("");
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
   };
 
   return (
@@ -48,7 +52,7 @@ const Header = () => {
               placeholder="ej: nature"
               className="w-full border-none bg-transparent text-black text-base pl-2 leading-5 pb-0 outline-none focus:outline-none"
               value={value}
-              onChange={(e) => setValue(e.target.value)}
+              onChange={handleChange}
               onKeyDown={handleKey}
             />
             {value && (
