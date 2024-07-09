@@ -31,3 +31,4 @@ node_modules/
 # Archivos
 bun.lockb
 .env
+.eslintrc.cjs

@@ -1,4 +1,3 @@
-import "./App.css";
 import Header from "./components/Header";
 import { ReactLazyLoading } from "./components/reactLazyLoading";
 

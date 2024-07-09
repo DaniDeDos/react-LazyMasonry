@@ -1,6 +1,5 @@
 # LazyMasonry
 
-
 <!-- [![License](http://img.shields.io/:license-Apache%202-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 [![Slack](https://img.shields.io/badge/Slack-Join%20our%20community-brightgreen?style=flat&logo=slack)](https://join.slack.com/t/querybook/shared_invite/zt-se82lvld-yyzRIqvIASsyYozk7jMCYQ)
 -->
@@ -78,3 +77,4 @@ Optimiza la carga de imágenes con técnicas avanzadas y gestión eficiente del 
 - [@types/react-lazy-load-image-component](https://www.npmjs.com/package/@types/react-lazy-load-image-component).
 - [react-masonry-css](https://www.npmjs.com/package/react-masonry-css).
 - [react-infinite-scroll-component](https://www.npmjs.com/package/react-infinite-scroll-component).
+- [react-icons](https://react-icons.github.io/react-icons/).

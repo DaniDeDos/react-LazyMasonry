@@ -5,6 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Masonry from "react-masonry-css";
 
 import Card from "./Card";
+import Spinner from "./Spinner";
 
 const fetchImages = async ({ pageParam, searchValue }) => {
   try {
@@ -23,7 +24,7 @@ const fetchImages = async ({ pageParam, searchValue }) => {
     // Incrementamos pageParam aquí antes de retornar
     const updatedData = {
       data: response.data.results,
-      prevOffset: pageParam + 1, // Asegúrate de que esto sea lo que realmente quieres
+      prevOffset: pageParam + 1,
     };
     return updatedData;
   } catch (error) {
@@ -36,15 +37,14 @@ function ReactLazyLoading() {
   const val = useBookStore((state) => state.value);
 
   const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ["images"],
+    queryKey: ["images", val], // Incluye `val` en la queryKey
     queryFn: ({ pageParam = 1, searchValue = val }) =>
       fetchImages({ pageParam, searchValue }),
     getNextPageParam: (lastPage) => {
-      // Verifica si hay más páginas basándote en el total de resultados
       if (lastPage.total === lastPage.data.length) {
         return false;
       }
-      return lastPage.prevOffset; // Asegúrate de que esto sea lo que realmente quieres
+      return lastPage.prevOffset;
     },
   });
 
@@ -64,7 +64,7 @@ function ReactLazyLoading() {
           dataLength={images.length}
           next={() => fetchNextPage()}
           hasMore={hasNextPage}
-          loader={<div>Cargando...</div>}
+          loader={<Spinner />}
         >
           <Masonry
             breakpointCols={breakpointColumnsObj}
