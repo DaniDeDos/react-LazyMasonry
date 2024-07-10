@@ -60,7 +60,7 @@ Optimiza la carga de imágenes con técnicas avanzadas y gestión eficiente del 
 - En el directorio donde se encuentra el proyecto ejecuta el siguiente comando para levantarlo.
 
 ```shell
-  bun install
+  bun dev
 ```
 
 > Si estás utilizando herramientas de gestión de paquetes como `yarn` o `npm` sustituirlo por `bun`.
