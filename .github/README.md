@@ -43,9 +43,9 @@ Optimiza la carga de imágenes con técnicas avanzadas y gestión eficiente del 
 
 ## Configuration
 
-> [!IMPORTANT]
-> Tener en cuenta que se utiliza la configuración específica de `Bun`.
-> Si estás utilizando herramientas de gestión de paquetes como `yarn` o `npm`, deberás ajustar la configuración en tu archivo `package.json` para asegurarte de que el proyecto funcione correctamente.
+### package.json.
+
+- Si tu utilizando gestor de paquetes es `yarn` o `npm`, ajustar la configuración en el archivo `package.json`.
 
 ```json
   "scripts": {
@@ -54,6 +54,34 @@ Optimiza la carga de imágenes con técnicas avanzadas y gestión eficiente del 
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+```
+
+### Variable de entorno
+
+- Crear el archivo `.env`.
+
+```javascript
+  "scripts": {
+    project-root
+    ├─ src/
+    │   ├─ components/
+    │   │   ├─ Header.tsx
+    │   │   └─ Spinner.tsx
+    │   └─ config/
+    │       └─ axios.ts
+/*  │
+==> ├─ .env
+*/  │
+    ├─ package.json
+    └─ vite.config.js
+  },
+```
+
+- Dentro del archivo `.env` definir las variables de entorno.
+
+```javascript
+  VITE_API_KEY_UNSPLASH=clave-api-key-yyy
+  VITE_SERVER_DOMAIN=https://api.dominio.com/
 ```
 
 ### Run
