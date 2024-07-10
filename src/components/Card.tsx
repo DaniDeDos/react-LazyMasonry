@@ -17,3 +17,5 @@ const Card = ({ item }: CardProps) => {
   );
 };
 export default Card;
+
+
