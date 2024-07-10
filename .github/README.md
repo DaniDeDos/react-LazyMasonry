@@ -9,7 +9,8 @@ Optimiza la carga de imágenes con técnicas avanzadas y gestión eficiente del 
 # Características
 
 - 📷 Carga diferida **lazy loading**: Mejora el rendimiento cargando solo imágenes en la vista.
-- 🏗️ Diseño de mampostería **masonry layout**: Presenta múltiples imágenes de manera atractiva y organizada.
+- 🏗️ Diseño de **masonry layout**: Presenta múltiples imágenes de manera atractiva y organizada.
+- 🖥️ Diseño responsivo: Asegurado que el sitio web funcione correctamente en dispositivos de cualquier tamaño.
 - 🔁 Desplazamiento infinito **infinite scrolling**: Permite cargar más contenido automáticamente.
 - 🔄 Manejo del estado global: Usando Zustand, facilita la actualización y acceso a valores de búsqueda.
 - 🖇️ Personalización de UI: Con Tailwind CSS, permite ajustes estilísticos específicos.
