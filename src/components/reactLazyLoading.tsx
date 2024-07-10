@@ -63,9 +63,9 @@ const ReactLazyLoading: React.FC = () => {
   const { data, fetchNextPage, hasNextPage } =
     useInfiniteQuery<FetchImagesResponse>({
       queryKey: ["images", val],
-      queryFn: () =>
+      queryFn: ({ pageParam = 1 }) =>
         fetchImages({
-          pageParam: 1,
+          pageParam: pageParam as number,
           searchValue: val,
         }),
 
