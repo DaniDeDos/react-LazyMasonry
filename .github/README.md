@@ -45,7 +45,7 @@ Optimiza la carga de imágenes con técnicas avanzadas y gestión eficiente del 
 
 ### package.json.
 
-- Si tu utilizando gestor de paquetes es `yarn` o `npm`, ajustar la configuración en el archivo `package.json`.
+- Si tu  gestor de paquetes es `yarn` o `npm`, ajustar la configuración en el archivo `package.json`.
 
 ```json
   "scripts": {
@@ -61,7 +61,6 @@ Optimiza la carga de imágenes con técnicas avanzadas y gestión eficiente del 
 - Crear el archivo `.env`.
 
 ```javascript
-  "scripts": {
     project-root
     ├─ src/
     │   ├─ components/
@@ -74,7 +73,6 @@ Optimiza la carga de imágenes con técnicas avanzadas y gestión eficiente del 
 */  │
     ├─ package.json
     └─ vite.config.js
-  },
 ```
 
 - Dentro del archivo `.env` definir las variables de entorno.
@@ -88,11 +86,11 @@ Optimiza la carga de imágenes con técnicas avanzadas y gestión eficiente del 
 
 - En el directorio donde se encuentra el proyecto ejecuta el siguiente comando para levantarlo.
 
+> - Si tu  gestor de paquetes es `yarn` o `npm` sustituirlo por `bun`.
+
 ```shell
   bun dev
 ```
-
-> Si estás utilizando herramientas de gestión de paquetes como `yarn` o `npm` sustituirlo por `bun`.
 
 #### Principales dependencias utilizadas.
 
