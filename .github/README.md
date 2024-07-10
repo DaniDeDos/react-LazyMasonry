@@ -61,7 +61,6 @@ Optimiza la carga de imágenes con técnicas avanzadas y gestión eficiente del 
 - Crear el archivo `.env`.
 
 ```javascript
-  "scripts": {
     project-root
     ├─ src/
     │   ├─ components/
@@ -74,7 +73,6 @@ Optimiza la carga de imágenes con técnicas avanzadas y gestión eficiente del 
 */  │
     ├─ package.json
     └─ vite.config.js
-  },
 ```
 
 - Dentro del archivo `.env` definir las variables de entorno.
